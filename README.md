@@ -15,29 +15,24 @@ Prophet + scikit-learn · Recharts
 energy-forecast-app/
 ├── backend/
 │   ├── app/
-│   │   ├── core/        # config, JWT auth, RBAC
-│   │   ├── db/           # SQLAlchemy session/engine
-│   │   ├── models/        # ORM models (User, Building, Device, EnergyReading,
-│   │   │                   #  Forecast, Anomaly, Recommendation, SimulationScenario,
-│   │   │                   #  Dataset, Alert)
-│   │   ├── schemas/        # Pydantic request/response schemas
-│   │   ├── ml/             # forecasting.py, anomaly.py, optimization.py, simulation.py
-│   │   │                   #   (pure functions — no FastAPI/DB dependency, independently testable)
-│   │   ├── services/       # alerts.py (alert creation helper), retraining.py (scheduler)
-│   │   ├── api/routes/     # auth, assets, datasets, forecasts, anomalies,
-│   │   │                   #   recommendations, simulations, analytics, alerts, reports
-│   │   └── main.py         # app assembly, CORS, router registration, scheduler lifespan
-│   ├── tests/              # pytest suite (32 tests)
+│   │   ├── core/
+│   │   ├── db/
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   ├── ml/
+│   │   ├── services/
+│   │   ├── api/routes/
+│   │   └── main.py
+│   ├── tests/
 │   ├── Dockerfile
 │   └── requirements.txt
 ├── frontend/
 │   ├── src/
-│   │   ├── api/client.js    # axios instance, JWT injection, 401 handling
+│   │   ├── api/client.js
 │   │   ├── context/AuthContext.jsx
-│   │   ├── components/      # Layout, StatCard, Panel, badges, ProtectedRoute,
-│   │   │                     #   NotificationsBell
-│   │   └── pages/            # Login, Register, Dashboard, Buildings, BuildingDetail,
-│   │                          #   DeviceDetail, DatasetUpload
+│   │   ├── components/
+│   │   └── pages/
+│   │
 │   ├── Dockerfile
 │   └── vite.config.js
 └── docker-compose.yml
