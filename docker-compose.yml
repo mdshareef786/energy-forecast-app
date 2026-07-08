@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Swap to the postgres service below for production:
+      #   DATABASE_URL=postgresql://energy:energy@postgres:5432/energy
+      DATABASE_URL: sqlite:////app/data/energy.db
+      SECRET_KEY: ${SECRET_KEY:-change_me_in_production}
+    volumes:
+      - backend_data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:8000
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  # Optional Postgres service — uncomment and point backend's DATABASE_URL at it
+  # for a production-grade deployment instead of the default SQLite file.
+  # postgres:
+  #   image: postgres:16-alpine
+  #   environment:
+  #     POSTGRES_USER: energy
+  #     POSTGRES_PASSWORD: energy
+  #     POSTGRES_DB: energy
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  backend_data:
+  # postgres_data:

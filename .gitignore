@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.db
+venv/
+.pytest_cache/
+
+# Env
+.env
+
+# Node / frontend
+node_modules/
+dist/
+
+# Uploads (user data, not source)
+backend/data/uploads/*
+!backend/data/uploads/.gitkeep
+
+# Misc
+.DS_Store
+*.log

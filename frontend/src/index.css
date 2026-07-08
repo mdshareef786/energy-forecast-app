@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Palette — industrial control-room, not the generic cream/terracotta default */
+  --bg: #0d1214;
+  --surface: #151b1e;
+  --surface-raised: #1c2327;
+  --border: #262f33;
+  --border-bright: #3a464b;
+
+  --text-primary: #e8edee;
+  --text-secondary: #93a3a8;
+  --text-muted: #5f6e73;
+
+  --accent-amber: #f2b705;   /* live gauge / peak-load accent */
+  --accent-amber-dim: #7a5c0a;
+  --accent-teal: #33c2a0;    /* efficiency / savings / forecast */
+  --accent-teal-dim: #1c5c4d;
+  --accent-danger: #e5484d;  /* anomalies */
+  --accent-danger-dim: #5c1f21;
+  --accent-blue: #4d8ee0;    /* neutral data series */
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-attachment: fixed;
+  background-position: -1px -1px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.font-mono-data {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-bright);
+  border-radius: 6px;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--accent-amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
